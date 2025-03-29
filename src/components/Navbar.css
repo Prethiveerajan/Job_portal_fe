@@ -1,0 +1,124 @@
+
+   .navbar {
+    position: fixed;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 890px;
+    height: 80px;
+    border-radius: 122px;
+    background: #ffffff;
+    border: 1px solid #fcfcfc;
+    box-shadow: 0px 0px 20px 0px rgba(127, 127, 127, 0.15);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+    z-index: 1000;
+}
+
+  .navbar-logo img {
+    width: 44px;
+    height: 44.67px;
+  }
+ 
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 11.14px;
+  }
+  
+  .navbar-nav a {
+    width: 102px;
+    height: 48px;
+    border-radius: 12px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .navbar-nav a:hover {
+    color: #0d6efd;
+  }
+  
+
+.create-jobs-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .create-jobs-btn {
+    width: auto; 
+    height: 38px;
+    min-width: 123px; 
+    border-radius: 30px;
+    padding: 8px 20px;
+    background: linear-gradient(180deg, #a128ff 0%, #6100ad 113.79%);
+    color: white;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .create-jobs-btn:hover {
+    background: linear-gradient(180deg, #9100e6 0%, #4d0091 113.79%);
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    position: relative;
+    width: 650px;
+    height: 550px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0px 0px 24px rgba(169, 169, 169, 0.25);
+    padding: 20px;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .modal-overlay,
+  .modal-content {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .modal-content {
+    transform: scale(0.95);
+  }
+  
+  .modal-overlay.show .modal-content {
+    opacity: 1;
+    transform: scale(1);
+  }
+  

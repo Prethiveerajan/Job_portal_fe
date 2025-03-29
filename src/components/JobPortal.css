@@ -1,0 +1,262 @@
+body {
+  background-color: #F6F6F6;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 1312px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.jobs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.card {
+  width: 312px;
+  height: 360px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #333;
+}
+
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.company-logo {
+  width: 83.464px;
+  height: 82px;
+  border-radius: 13.18px;
+  border: 1px solid #ddd;
+}
+
+.job-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: left;
+}
+
+
+ .time-menu-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  top: -60px; 
+}
+
+.time-badge {
+  background: #CFE2FF;
+  color: #0D6EFD;
+  padding: 5px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: bold;
+} 
+
+
+.menu-container {
+  position: relative;
+  cursor: pointer;
+  top:3px;
+}
+
+.menu-icon {
+  font-size: 20px;
+}
+
+.menu-dropdown {
+  position: absolute;
+  right: 0;
+  top: 25px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.menu-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.menu-dropdown button:hover {
+  background: #f2f2f2;
+}
+
+/* Time Badge & Three-dot Menu */
+.time-menu-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  top: -70px; /* Move up slightly */
+}
+
+/* Time Badge */
+.time-badge {
+  background: #CFE2FF;
+  color: #0D6EFD;
+  padding: 5px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+
+
+.menu-dropdown {
+  position: absolute;
+  right: 0;
+  top: 25px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dropdown Buttons */
+.menu-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+}
+
+.menu-dropdown button:hover {
+  background: #f2f2f2;
+}
+
+/* Job details section */
+.job-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #666;
+  font-size: 14px;
+  margin-top: 2px;
+  gap: 5px;
+}
+
+.job-details span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+.job-details svg {
+  color: #414142;
+}
+
+.job-description {
+  font-size: 13px;
+  color: #555;
+  padding-left: 15px;
+  list-style-type: disc;
+}
+
+/* Apply Now Button */
+.apply-btn {
+  background: #0D6EFD;
+  color: white;
+  padding: 12px;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.apply-btn:hover {
+  background: #0056b3;
+}
+
+/* Modal Styling */
+.edit-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.edit-modal input, 
+.edit-modal textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.edit-modal button {
+  margin-right: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1400px) {
+  .container {
+    width: 100%;
+    padding: 20px;
+  }
+  .jobs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .jobs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .jobs {
+    grid-template-columns: repeat(1, 1fr);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
