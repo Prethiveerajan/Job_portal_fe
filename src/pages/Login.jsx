@@ -25,7 +25,7 @@ const Login = () => {
     setMessage("");
   
     try {
-        console.log('called')
+       
       const response = await axiosInstance.post('api/auth/login', formData);
       console.log(response)
       if (response.status === 200) {
