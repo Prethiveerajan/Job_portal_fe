@@ -115,7 +115,7 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const apiUrl = import.meta.env.REACT_APP_API_URL //|| "http://localhost:5000"; // Fallback to localhost in case it's not defined
+  const apiUrl = import.meta.env.REACT_APP_API_URL || "http://localhost:5000"; // Fallback to localhost in case it's not defined
 
   // Example: Login Component
   const handleSubmit = async (event) => {

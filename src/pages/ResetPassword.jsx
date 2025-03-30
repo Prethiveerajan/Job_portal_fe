@@ -64,7 +64,7 @@ const ResetPassword = () => {
     setMessage("");
 
     try {
-      const apiUrl = import.meta.env.REACT_APP_API_URL// || "http://localhost:5000"; // Use dynamic API URL
+      const apiUrl = import.meta.env.REACT_APP_API_URL|| "http://localhost:5000"; // Use dynamic API URL
       await axios.post(`${apiUrl}/api/auth/reset-password/${token}`, { newPassword });
       setMessage("Password reset successful! Redirecting to login...");
       setTimeout(() => navigate("/login"), 2000);

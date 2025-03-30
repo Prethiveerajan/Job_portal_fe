@@ -67,7 +67,7 @@ const Signup = () => {
     setError("");
 
     try {
-        const apiUrl = import.meta.env.REACT_APP_API_URL// || "http://localhost:5000"; // Fallback to localhost if undefined
+        const apiUrl = import.meta.env.REACT_APP_API_URL || "http://localhost:5000"; // Fallback to localhost if undefined
         await axios.post(`${apiUrl}/api/auth/signup`, formData);
     } catch (err) {
       setError("Error signing up. Please try again.");
