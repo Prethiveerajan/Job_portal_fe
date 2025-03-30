@@ -19,7 +19,6 @@ const SearchFilter = ({ onFilterChange }) => {
   return (
     <div className="search-filter-container">
       <div className="search-filter-wrapper">
-        {/* Search Box */}
         <div className="search-input">
           <FaSearch className="search-icon" />
           <input

@@ -1,8 +1,8 @@
 
 
 import React, { useState } from "react";
-import "./Navbar.css"; // Import Navbar styles
-import JobCreationForm from "./JobCreationForm"; // Import Job Creation Form
+import "./Navbar.css"; 
+import JobCreationForm from "./JobCreationForm"; 
 
 function Navbar() {
   const [showModal, setShowModal] = useState(false);
