@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
         const token = localStorage.getItem("token"); // ✅ Get token
         if (!token) throw new Error("No token found");
 
-        const apiUrl = process.env.REACT_APP_API_URL //|| "http://localhost:5000"; // Use default API URL or localhost
+        const apiUrl = import.meta.env.REACT_APP_API_URL //|| "http://localhost:5000"; // Use default API URL or localhost
         const res = await axios.get(`${apiUrl}/api/auth/me`, {
           headers: {
             Authorization: `Bearer ${token}`, // ✅ Correct token format
