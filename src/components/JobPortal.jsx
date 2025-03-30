@@ -156,7 +156,9 @@ function JobPortal() {
               </div>
 
               <ul className="job-description">
-                <li>{job.jobDescription.slice(0, 100)}...</li>
+              <li>{job.jobDescription ? job.jobDescription.slice(0, 100) + "..." : "No description available"}</li>
+
+
               </ul>
 
               <div className="apply-btn">Apply Now</div>
