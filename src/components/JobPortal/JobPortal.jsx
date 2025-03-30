@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
-import SearchFilter from "./SearchFilters"; // Import Search Filter
+import SearchFilter from "../SearchFilters/SearchFilters"; // Import Search Filter
 import {
   FaBriefcase,
   FaMapMarkerAlt,
