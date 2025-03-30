@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
         if (!token) throw new Error("No token found");
 
        
-        const res = await axiosInstance.get(`${apiUrl}/api/auth/me`, {
+        const res = await axiosInstance.get('/api/auth/me', {
           headers: {
             Authorization: `Bearer ${token}`, // ✅ Correct token format
           },

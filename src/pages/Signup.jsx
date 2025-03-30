@@ -70,7 +70,7 @@ const Signup = () => {
     try {
         
         
-        await axiosInstance.post(`${apiUrl}/api/auth/signup`, formData);
+        await axiosInstance.post('/api/auth/signup', formData);
     } catch (err) {
       setError("Error signing up. Please try again.");
     }

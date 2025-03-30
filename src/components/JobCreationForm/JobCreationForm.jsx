@@ -181,6 +181,7 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import "./JobCreationForm.css"; // Keep existing styles
+import axiosInstance from "../../utils/axiosInstance";
 
 const JOB_TYPES = ["Full-time", "Part-time", "Contract", "Internship"];
 const LOCATIONS = ["Bangalore", "Chennai", "Hyderabad", "Delhi", "Remote"];
@@ -229,7 +230,7 @@ function JobCreationForm({ onJobAdded }) {
 
     if (Object.values(data).some((val) => !val)) return;
 
-    fetch("http://localhost:5000/api/jobs/create", {
+    axiosInstance.get("/api/jobs/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
