@@ -19,21 +19,14 @@ function App() {
     <>
       <Navbar />
       <SearchFilters />
-      
-        
-       
-        
-      
 
-      
+      <div className="job-portal-container">
         {isCreatingJob ? (
           <JobCreationForm onAddJob={handleAddJob} />
         ) : (
           <JobPortal jobs={jobs} />
         )}
-      
-
-      
+      </div>
     </>
   );
 }
