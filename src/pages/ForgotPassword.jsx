@@ -4,6 +4,7 @@ import { Button, TextField, Typography, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
+import axiosInstance from "../utils/axiosInstance";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -15,8 +16,8 @@ const ForgotPassword = () => {
     setMessage("");
 
     try {
-        const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000"; 
-        await axios.post(`${apiUrl}/api/auth/forgot-password`, { email });
+        
+        await axiosInstance.post(`${apiUrl}/api/auth/forgot-password`, { email });
 
         console.log("Response:", response.data);
         setMessage("Password reset instructions sent to your email.");

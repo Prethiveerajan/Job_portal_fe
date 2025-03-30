@@ -52,6 +52,7 @@ import { Button, TextField, Typography, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
+import axiosInstance from "../utils/axiosInstance";
 
 const Signup = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -67,8 +68,9 @@ const Signup = () => {
     setError("");
 
     try {
-        const apiUrl = import.meta.env.REACT_APP_API_URL || "http://localhost:5000"; // Fallback to localhost if undefined
-        await axios.post(`${apiUrl}/api/auth/signup`, formData);
+        
+        
+        await axiosInstance.post(`${apiUrl}/api/auth/signup`, formData);
     } catch (err) {
       setError("Error signing up. Please try again.");
     }

@@ -103,6 +103,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";  // Import AuthContext
 import "../App.css"; // Import CSS file
+import axiosInstance from "../utils/axiosInstance";
 
 const Login = () => {
   const { setUser, setIsAuthenticated } = useContext(AuthContext); // ✅ Use AuthContext
@@ -115,8 +116,6 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const apiUrl = import.meta.env.REACT_APP_API_URL || "http://localhost:5000"; // Fallback to localhost in case it's not defined
-
   // Example: Login Component
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -124,12 +123,9 @@ const Login = () => {
     setMessage("");
   
     try {
-      const response = await axios.post(
-        `${apiUrl}/api/auth/login`, // Use the dynamic API URL
-        formData,
-        { withCredentials: true }
-      );
-  
+        console.log('called')
+      const response = await axiosInstance.post('api/auth/login', formData);
+      console.log(response)
       if (response.status === 200) {
         setUser(response.data.user);
         setIsAuthenticated(true);

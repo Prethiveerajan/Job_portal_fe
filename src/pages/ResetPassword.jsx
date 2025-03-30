@@ -52,6 +52,7 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button, TextField, Typography, Box } from "@mui/material";
 import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 const ResetPassword = () => {
   const { token } = useParams();
@@ -64,8 +65,8 @@ const ResetPassword = () => {
     setMessage("");
 
     try {
-      const apiUrl = import.meta.env.REACT_APP_API_URL|| "http://localhost:5000"; // Use dynamic API URL
-      await axios.post(`${apiUrl}/api/auth/reset-password/${token}`, { newPassword });
+      
+      await axiosInstance.post(`${apiUrl}/api/auth/reset-password/${token}`, { newPassword });
       setMessage("Password reset successful! Redirecting to login...");
       setTimeout(() => navigate("/login"), 2000);
     } catch (err) {
