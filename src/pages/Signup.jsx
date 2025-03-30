@@ -67,8 +67,8 @@ const Signup = () => {
     setError("");
 
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/signup`, formData);
-      navigate("/login"); // Redirect to login page after successful signup
+        const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000"; // Fallback to localhost if undefined
+        await axios.post(`${apiUrl}/api/auth/signup`, formData);
     } catch (err) {
       setError("Error signing up. Please try again.");
     }
