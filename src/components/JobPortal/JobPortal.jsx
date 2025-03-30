@@ -252,7 +252,7 @@ function JobPortal() {
   };
 
   const handleDelete = async (jobId) => {
-    const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000"; // Use dynamic API URL
+    const apiUrl = process.env.REACT_APP_API_URL //|| "http://localhost:5000"; // Use dynamic API URL
     try {
       const response = await fetch(`${apiUrl}/api/jobs/${jobId}`, {
         method: "DELETE",
