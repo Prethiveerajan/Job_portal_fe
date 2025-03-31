@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import "./JobCreationForm.css"; // Keep existing styles
@@ -50,16 +51,15 @@ function JobCreationForm({ onJobAdded }) {
 
     if (Object.values(data).some((val) => !val)) return;
 
-    axiosInstance.get("/api/jobs/create", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((newJob) => {
-        onJobAdded(newJob);
-      })
-      .catch((error) => console.error("Error adding job:", error));
+
+    axiosInstance.post("/api/jobs/create", data)  // ✅ Use POST request
+  .then((response) => {
+    console.log("Job added successfully:", response.data);
+    onJobAdded(response.data);
+  })
+  .catch((error) => {
+    console.error("Error adding job:", error.response ? error.response.data : error.message);
+  });
   };
 
   return (

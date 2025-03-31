@@ -1,201 +1,4 @@
 
-// // import React, { useState, useEffect, useRef } from "react";
-// // import SearchFilter from "../SearchFilters/SearchFilters"; // Import Search Filter
-// // import {
-// //   FaBriefcase,
-// //   FaMapMarkerAlt,
-// //   FaRupeeSign,
-// //   FaClock,
-// //   FaEllipsisV,
-// // } from "react-icons/fa";
-// // import "./JobPortal.css";
-
-// // const companyLogos = {
-// //   Amazon: "https://logo.clearbit.com/amazon.com",
-// //   Microsoft: "https://logo.clearbit.com/microsoft.com",
-// //   Google: "https://logo.clearbit.com/google.com",
-// //   Swiggy: "https://logo.clearbit.com/swiggy.com",
-// //   Infosys: "https://logo.clearbit.com/infosys.com",
-// //   Default: "https://logo.clearbit.com/google.com",
-// // };
-
-// // function JobPortal() {
-// //   const [jobs, setJobs] = useState([]);
-// //   const [filteredJobs, setFilteredJobs] = useState([]);
-// //   const [menuOpen, setMenuOpen] = useState(null);
-// //   const [selectedJob, setSelectedJob] = useState(null);
-// //   const [showEditForm, setShowEditForm] = useState(false);
-// //   const [isSearchVisible, setIsSearchVisible] = useState(true); // State to manage search bar visibility
-
-// //   const lastScrollY = useRef(window.scrollY); // Track previous scroll position
-
-// //   useEffect(() => {
-// //     fetch("http://localhost:5000/api/jobs")
-// //       .then((response) => response.json())
-// //       .then((data) => {
-// //         setJobs(data);
-// //         setFilteredJobs(data);
-// //       })
-// //       .catch((error) => console.error("Error fetching jobs:", error));
-// //   }, []);
-
-// //   useEffect(() => {
-// //     const handleScroll = () => {
-// //       if (window.scrollY > lastScrollY.current) {
-// //         setIsSearchVisible(false); // Hide search bar when scrolling down
-// //       } else {
-// //         setIsSearchVisible(true); // Show search bar when scrolling up
-// //       }
-// //       lastScrollY.current = window.scrollY;
-// //     };
-
-// //     window.addEventListener("scroll", handleScroll);
-// //     return () => window.removeEventListener("scroll", handleScroll);
-// //   }, []);
-
-// //   // Function to apply filters
-// //   const handleFilterChange = ({ searchTerm, location, jobType, salary }) => {
-// //     const filtered = jobs.filter((job) => {
-// //       return (
-// //         (searchTerm === "" ||
-// //           job.jobTitle.toLowerCase().includes(searchTerm.toLowerCase())) &&
-// //         (location === "" || job.location === location) &&
-// //         (jobType === "" || job.jobType === jobType) &&
-// //         job.salaryMin >= salary
-// //       );
-// //     });
-
-// //     setFilteredJobs(filtered);
-// //   };
-
-// //   // DELETE job function
-// //   const handleDelete = async (jobId) => {
-// //     try {
-// //       const response = await fetch(`http://localhost:5000/api/jobs/${jobId}`, {
-// //         method: "DELETE",
-// //       });
-
-// //       if (!response.ok) {
-// //         throw new Error("Failed to delete job");
-// //       }
-
-// //       setJobs((prevJobs) => prevJobs.filter((job) => job._id !== jobId));
-// //       setFilteredJobs((prevJobs) => prevJobs.filter((job) => job._id !== jobId));
-
-// //       setMenuOpen(null);
-// //     } catch (error) {
-// //       console.error("Error deleting job:", error);
-// //     }
-// //   };
-
-// //   // EDIT job function
-// //   const handleEdit = (job) => {
-// //     setSelectedJob(job);
-// //     setShowEditForm(true);
-// //     setMenuOpen(null);
-// //   };
-
-// //   return (
-// //     <div className="container">
-// //       {/* Search & Filters - Visibility Controlled by Scroll */}
-// //       {isSearchVisible && <SearchFilter onFilterChange={handleFilterChange} />}
-
-// //       <div className="jobs">
-// //         {filteredJobs.map((job, index) => {
-// //           const companyLogo =
-// //             companyLogos[job.companyName] || companyLogos.Default;
-
-// //           return (
-// //             <div key={index} className="card">
-// //               <div className="card-top">
-// //                 <div className="logo-title-container">
-// //                   <img
-// //                     src={companyLogo}
-// //                     alt={job.companyName}
-// //                     className="company-logo"
-// //                   />
-// //                   <h3 className="job-title">{job.jobTitle}</h3>
-// //                 </div>
-
-// //                 {/* Time Badge & Three-dot Menu */}
-// //                 <div className="time-menu-container">
-// //                   <span className="time-badge">
-// //                     <FaClock /> 24 hours ago
-// //                   </span>
-// //                   <div className="menu-container">
-// //                     <FaEllipsisV
-// //                       className="menu-icon"
-// //                       onClick={(e) => {
-// //                         e.stopPropagation();
-// //                         setMenuOpen(menuOpen === index ? null : index);
-// //                       }}
-// //                     />
-// //                     {menuOpen === index && (
-// //                       <div className="menu-dropdown">
-// //                         <button onClick={() => handleEdit(job)}>Edit</button>
-// //                         <button onClick={() => handleDelete(job._id)}>
-// //                           Delete
-// //                         </button>
-// //                       </div>
-// //                     )}
-// //                   </div>
-// //                 </div>
-// //               </div>
-
-// //               <div className="job-details">
-// //                 <span>
-// //                   <FaBriefcase /> {job.experience || "1-3 yr"} Exp
-// //                 </span>
-// //                 <span>
-// //                   <FaMapMarkerAlt /> {job.location}
-// //                 </span>
-// //                 <span>
-// //                   <FaRupeeSign />
-// //                   {job.salaryMax} LPA
-// //                 </span>
-// //               </div>
-
-// //               <ul className="job-description">
-// //               <li>{job.jobDescription ? job.jobDescription.slice(0, 100) + "..." : "No description available"}</li>
-
-
-// //               </ul>
-
-// //               <div className="apply-btn">Apply Now</div>
-// //             </div>
-// //           );
-// //         })}
-// //       </div>
-
-// //       {/* Edit Job Modal */}
-// //       {showEditForm && selectedJob && (
-// //         <div className="edit-modal">
-// //           <h3>Edit Job</h3>
-// //           <input
-// //             type="text"
-// //             value={selectedJob.jobTitle}
-// //             onChange={(e) =>
-// //               setSelectedJob({ ...selectedJob, jobTitle: e.target.value })
-// //             }
-// //           />
-// //           <textarea
-// //             value={selectedJob.jobDescription}
-// //             onChange={(e) =>
-// //               setSelectedJob({ ...selectedJob, jobDescription: e.target.value })
-// //             }
-// //           />
-// //           <button onClick={() => setShowEditForm(false)}>Cancel</button>
-// //           <button onClick={() => console.log("Save job changes")}>
-// //             Save
-// //           </button>
-// //         </div>
-// //       )}
-// //     </div>
-// //   );
-// // }
-
-// // export default JobPortal;
-
 
 // import React, { useState, useEffect, useRef } from "react";
 // import SearchFilter from "../SearchFilters/SearchFilters";
@@ -225,181 +28,6 @@
 //   const [selectedJob, setSelectedJob] = useState(null);
 //   const [showEditForm, setShowEditForm] = useState(false);
 //   const [isSearchVisible, setIsSearchVisible] = useState(true);
-
-//   const lastScrollY = useRef(window.scrollY);
-
-//   useEffect(() => {
- 
-//     axiosInstance.get(`${apiUrl}/api/jobs`)
-//       .then((response) => response.json())
-//       .then((data) => {
-//         setJobs(data);
-//         setFilteredJobs(data);
-//       })
-//       .catch((error) => console.error("Error fetching jobs:", error));
-//   }, []);
-
-//   const handleFilterChange = ({ searchTerm, location, jobType, salary }) => {
-//     const filtered = jobs.filter((job) => {
-//       return (
-//         (searchTerm === "" || job.jobTitle.toLowerCase().includes(searchTerm.toLowerCase())) &&
-//         (location === "" || job.location === location) &&
-//         (jobType === "" || job.jobType === jobType) &&
-//         job.salaryMin >= salary
-//       );
-//     });
-
-//     setFilteredJobs(filtered);
-//   };
-
-//   const handleDelete = async (jobId) => {
-//      // Use dynamic API URL
-//     try {
-//       const response = await axiosInstance.get('/api/jobs/${jobId}', {
-//         method: "DELETE",
-//       });
-
-//       if (!response.ok) {
-//         throw new Error("Failed to delete job");
-//       }
-
-//       setJobs((prevJobs) => prevJobs.filter((job) => job._id !== jobId));
-//       setFilteredJobs((prevJobs) => prevJobs.filter((job) => job._id !== jobId));
-
-//       setMenuOpen(null);
-//     } catch (error) {
-//       console.error("Error deleting job:", error);
-//     }
-//   };
-
-//   const handleEdit = (job) => {
-//     setSelectedJob(job);
-//     setShowEditForm(true);
-//     setMenuOpen(null);
-//   };
-
-//   return (
-//     <div className="container">
-//       {isSearchVisible && <SearchFilter onFilterChange={handleFilterChange} />}
-//       <div className="jobs">
-//         {filteredJobs.map((job, index) => {
-//           const companyLogo = companyLogos[job.companyName] || companyLogos.Default;
-//           return (
-//             <div key={index} className="card">
-//               <div className="card-top">
-//                 <div className="logo-title-container">
-//                   <img
-//                     src={companyLogo}
-//                     alt={job.companyName}
-//                     className="company-logo"
-//                   />
-//                   <h3 className="job-title">{job.jobTitle}</h3>
-//                 </div>
-
-//                 <div className="time-menu-container">
-//                   <span className="time-badge">
-//                     <FaClock /> 24 hours ago
-//                   </span>
-//                   <div className="menu-container">
-//                     <FaEllipsisV
-//                       className="menu-icon"
-//                       onClick={(e) => {
-//                         e.stopPropagation();
-//                         setMenuOpen(menuOpen === index ? null : index);
-//                       }}
-//                     />
-//                     {menuOpen === index && (
-//                       <div className="menu-dropdown">
-//                         <button onClick={() => handleEdit(job)}>Edit</button>
-//                         <button onClick={() => handleDelete(job._id)}>
-//                           Delete
-//                         </button>
-//                       </div>
-//                     )}
-//                   </div>
-//                 </div>
-//               </div>
-
-//               <div className="job-details">
-//                 <span>
-//                   <FaBriefcase /> {job.experience || "1-3 yr"} Exp
-//                 </span>
-//                 <span>
-//                   <FaMapMarkerAlt /> {job.location}
-//                 </span>
-//                 <span>
-//                   <FaRupeeSign />
-//                   {job.salaryMax} LPA
-//                 </span>
-//               </div>
-
-//               <ul className="job-description">
-//                 <li>{job.jobDescription ? job.jobDescription.slice(0, 100) + "..." : "No description available"}</li>
-//               </ul>
-
-//               <div className="apply-btn">Apply Now</div>
-//             </div>
-//           );
-//         })}
-//       </div>
-
-//       {showEditForm && selectedJob && (
-//         <div className="edit-modal">
-//           <h3>Edit Job</h3>
-//           <input
-//             type="text"
-//             value={selectedJob.jobTitle}
-//             onChange={(e) =>
-//               setSelectedJob({ ...selectedJob, jobTitle: e.target.value })
-//             }
-//           />
-//           <textarea
-//             value={selectedJob.jobDescription}
-//             onChange={(e) =>
-//               setSelectedJob({ ...selectedJob, jobDescription: e.target.value })
-//             }
-//           />
-//           <button onClick={() => setShowEditForm(false)}>Cancel</button>
-//           <button onClick={() => console.log("Save job changes")}>
-//             Save
-//           </button>
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
-
-// export default JobPortal;
-
-// import React, { useState, useEffect, useRef } from "react";
-// import SearchFilter from "../SearchFilters/SearchFilters";
-// import {
-//   FaBriefcase,
-//   FaMapMarkerAlt,
-//   FaRupeeSign,
-//   FaClock,
-//   FaEllipsisV,
-// } from "react-icons/fa";
-// import "./JobPortal.css";
-// import axiosInstance from "../../utils/axiosInstance";
-
-// const companyLogos = {
-//   Amazon: "https://logo.clearbit.com/amazon.com",
-//   Microsoft: "https://logo.clearbit.com/microsoft.com",
-//   Google: "https://logo.clearbit.com/google.com",
-//   Swiggy: "https://logo.clearbit.com/swiggy.com",
-//   Infosys: "https://logo.clearbit.com/infosys.com",
-//   Default: "https://logo.clearbit.com/google.com",
-// };
-
-// function JobPortal() {
-//   const [jobs, setJobs] = useState([]);
-//   const [filteredJobs, setFilteredJobs] = useState([]);
-//   const [menuOpen, setMenuOpen] = useState(null);
-//   const [selectedJob, setSelectedJob] = useState(null);
-//   const [showEditForm, setShowEditForm] = useState(false);
-//   const [isSearchVisible, setIsSearchVisible] = useState(true);
-
 //   const lastScrollY = useRef(window.scrollY);
 
 //   useEffect(() => {
@@ -411,6 +39,21 @@
 //       .catch((error) => console.error("Error fetching jobs:", error));
 //   }, []);
 
+//   // ✅ Hide search filter on scroll down, show on scroll up
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       if (window.scrollY > lastScrollY.current) {
+//         setIsSearchVisible(false);
+//       } else {
+//         setIsSearchVisible(true);
+//       }
+//       lastScrollY.current = window.scrollY;
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
 //   const handleFilterChange = ({ searchTerm, location, jobType, salary }) => {
 //     const filtered = jobs.filter((job) => {
 //       return (
@@ -424,27 +67,56 @@
 //     setFilteredJobs(filtered);
 //   };
 
+//   // ✅ Handle Delete
 //   const handleDelete = async (jobId) => {
 //     try {
 //       await axiosInstance.delete(`/api/jobs/${jobId}`);
 
+//       // ✅ Remove from state after successful delete
 //       setJobs((prevJobs) => prevJobs.filter((job) => job._id !== jobId));
 //       setFilteredJobs((prevJobs) => prevJobs.filter((job) => job._id !== jobId));
+
 //       setMenuOpen(null);
+//       alert("Job deleted successfully!");
 //     } catch (error) {
 //       console.error("Error deleting job:", error);
+//       alert("Failed to delete job.");
 //     }
 //   };
 
+//   // ✅ Handle Edit
 //   const handleEdit = (job) => {
-//     setSelectedJob(job);
+//     setSelectedJob({ ...job }); // Clone job for editing
 //     setShowEditForm(true);
 //     setMenuOpen(null);
 //   };
 
+//   // ✅ Save Edited Job
+//   const handleSaveEdit = async () => {
+//     try {
+//       const response = await axiosInstance.put(`/api/jobs/${selectedJob._id}`, selectedJob);
+
+//       // ✅ Update state with the modified job
+//       setJobs((prevJobs) =>
+//         prevJobs.map((job) => (job._id === selectedJob._id ? response.data : job))
+//       );
+//       setFilteredJobs((prevJobs) =>
+//         prevJobs.map((job) => (job._id === selectedJob._id ? response.data : job))
+//       );
+
+//       setShowEditForm(false);
+//       alert("Job updated successfully!");
+//     } catch (error) {
+//       console.error("Error updating job:", error);
+//       alert("Failed to update job.");
+//     }
+//   };
+
 //   return (
 //     <div className="container">
+//       {/* ✅ Hide SearchFilter when scrolling down */}
 //       {isSearchVisible && <SearchFilter onFilterChange={handleFilterChange} />}
+
 //       <div className="jobs">
 //         {filteredJobs.map((job, index) => {
 //           const companyLogo = companyLogos[job.companyName] || companyLogos.Default;
@@ -496,6 +168,8 @@
 //           );
 //         })}
 //       </div>
+
+//       {/* ✅ Edit Job Modal */}
 //       {showEditForm && selectedJob && (
 //         <div className="edit-modal">
 //           <h3>Edit Job</h3>
@@ -513,7 +187,7 @@
 //             }
 //           />
 //           <button onClick={() => setShowEditForm(false)}>Cancel</button>
-//           <button onClick={() => console.log("Save job changes")}>Save</button>
+//           <button onClick={handleSaveEdit}>Save</button>
 //         </div>
 //       )}
 //     </div>
@@ -522,17 +196,9 @@
 
 // export default JobPortal;
 
-
-
 import React, { useState, useEffect, useRef } from "react";
 import SearchFilter from "../SearchFilters/SearchFilters";
-import {
-  FaBriefcase,
-  FaMapMarkerAlt,
-  FaRupeeSign,
-  FaClock,
-  FaEllipsisV,
-} from "react-icons/fa";
+import { FaBriefcase, FaMapMarkerAlt, FaRupeeSign, FaClock, FaEllipsisV } from "react-icons/fa";
 import "./JobPortal.css";
 import axiosInstance from "../../utils/axiosInstance";
 
@@ -545,32 +211,22 @@ const companyLogos = {
   Default: "https://logo.clearbit.com/google.com",
 };
 
-function JobPortal() {
-  const [jobs, setJobs] = useState([]);
-  const [filteredJobs, setFilteredJobs] = useState([]);
+function JobPortal({ jobs, onJobAdded }) {
+  const [filteredJobs, setFilteredJobs] = useState(jobs);
   const [menuOpen, setMenuOpen] = useState(null);
-  const [selectedJob, setSelectedJob] = useState(null);
-  const [showEditForm, setShowEditForm] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(true);
-
   const lastScrollY = useRef(window.scrollY);
 
   useEffect(() => {
-    axiosInstance.get("/api/jobs")
-      .then((response) => {
-        setJobs(response.data);
-        setFilteredJobs(response.data);
-      })
-      .catch((error) => console.error("Error fetching jobs:", error));
-  }, []);
+    setFilteredJobs(jobs); // Update displayed jobs when new job is added
+  }, [jobs]);
 
-  // ✅ Hide search filter on scroll down, show on scroll up
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY.current) {
-        setIsSearchVisible(false); // Hide when scrolling down
+        setIsSearchVisible(false);
       } else {
-        setIsSearchVisible(true); // Show when scrolling up
+        setIsSearchVisible(true);
       }
       lastScrollY.current = window.scrollY;
     };
@@ -579,23 +235,21 @@ function JobPortal() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleFilterChange = ({ searchTerm, location, jobType, salary }) => {
-    const filtered = jobs.filter((job) => {
-      return (
-        (searchTerm === "" || job.jobTitle.toLowerCase().includes(searchTerm.toLowerCase())) &&
-        (location === "" || job.location === location) &&
-        (jobType === "" || job.jobType === jobType) &&
-        job.salaryMin >= salary
-      );
-    });
-
-    setFilteredJobs(filtered);
+  const handleDelete = async (jobId) => {
+    try {
+      await axiosInstance.delete(`/api/jobs/${jobId}`);
+      onJobAdded(jobs.filter((job) => job._id !== jobId)); // Remove job from state
+      setMenuOpen(null);
+      alert("Job deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting job:", error);
+      alert("Failed to delete job.");
+    }
   };
 
   return (
     <div className="container">
-      {/* ✅ Hide SearchFilter when scrolling down */}
-      {isSearchVisible && <SearchFilter onFilterChange={handleFilterChange} />}
+      {isSearchVisible && <SearchFilter />}
 
       <div className="jobs">
         {filteredJobs.map((job, index) => {
@@ -621,8 +275,7 @@ function JobPortal() {
                     />
                     {menuOpen === index && (
                       <div className="menu-dropdown">
-                        <button onClick={() => console.log("Edit Job")}>Edit</button>
-                        <button onClick={() => console.log("Delete Job")}>Delete</button>
+                        <button onClick={() => handleDelete(job._id)}>Delete</button>
                       </div>
                     )}
                   </div>
