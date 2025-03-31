@@ -19,7 +19,7 @@ const PrivateRoute = ({ children }) => {
     return <Navigate to="/login" replace />;
   }
 
-  return children; // Allow access if authenticated
+  return children; 
 };
 
 const AppContent = () => {
@@ -30,7 +30,7 @@ const AppContent = () => {
     <>
       {!hideNavbarRoutes.some(route => location.pathname.startsWith(route)) && <Navbar />}
       <Routes>
-        {/* Protected route for JobPortal */}
+      
         <Route
           path="/"
           element={

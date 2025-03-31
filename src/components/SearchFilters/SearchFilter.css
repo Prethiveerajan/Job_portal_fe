@@ -21,7 +21,7 @@ header-container.hidden {
   transition: transform 0.3s ease-in-out;
 }
 
-/* Hide SearchFilters when JobPortal moves past */
+
 .search-filter-wrapper {
   transition: opacity 0.3s ease-in-out;
 }
