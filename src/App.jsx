@@ -1,5 +1,4 @@
 
-
 import React, { useContext, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
@@ -11,7 +10,7 @@ import AuthProvider, { AuthContext } from "./context/AuthContext";
 import ResetPassword from "./pages/ResetPassword";
 import axiosInstance from "./utils/axiosInstance";
 
-// PrivateRoute component to protect routes
+
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useContext(AuthContext);
   if (!isAuthenticated) {
